@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<?php session_start(); ?>
+<title>Register &middot; 404 LnF</title>
+<link rel="stylesheet" href="CSS/form.css" type="text/css"/>
+<script type="text/javascript" src="CSS/form.js"></script>
+<script type="text/javascript">
+		H5F.listen(window,"load",function () {
+			H5F.setup(document.getElementById("signup"));
+		},false);
+	</script>
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+ <script type="text/javascript">
+  
+  function checkUsername(str) {
+  if (str.length==0) { 
+    document.getElementById("usernameResult").innerHTML="";
+    return;
+  }
+  if (window.XMLHttpRequest) {
+    // code for IE7+, Firefox, Chrome, Opera, Safari
+    xmlhttp=new XMLHttpRequest();
+  } else {  // code for IE6, IE5
+    xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+  }
+  xmlhttp.onreadystatechange=function() {
+    if (this.readyState==4 && this.status==200) 
+    {
+      document.getElementById("usernameResult").innerHTML=this.responseText;
+    }
+  }
+  xmlhttp.open("GET","check_username.php?q="+str,true);
+  xmlhttp.send();
+}
+	 
+  </script>
+</head>
+<body>
+	
+ <form id="signup" method="POST" action="acc_register.php">
+  <h1>Register to 404 Life not Found!</h1>
+  <h2>Fields marked (*) are required</h2>
+  <fieldset>
+   <ol>
+    <li>
+     <label for="firstname">Username *</label> 
+     <input type="text" id="username" name="username" onfocusout="checkUsername(this.value)" placeholder="Username" required />
+      <p id="usernameResult"></p>
+    </li>
+   </ol>
+   <ol>						
+    <li>
+     <label for="password">Your Password *</label>																																																				<!-- Minimum 8 chars 1 number 1 upper & lower case,  A-Z caps or a-z lower case     -->
+     <input id="password" name="password" type="password" title="Minimum 8 characters, one number, one uppercase and one lowercase letter" pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*" required /> 
+     <p class="validation01">
+      <span class="invalid">Minimum 8 characters, one number, one uppercase letter and one lowercase letter</span>
+      <span class="valid">Your password meets our requirements, thank you.</span>
+     </p>
+    </li>
+   </ol>
+	 </fieldset>
+  <center>
+		<input type="submit" name="submit" value="Sign up" />
+		</br>
+	 </br>
+	</form>
+  <form action="admin_register_form.php" method="POST">	
+		Register as an admin?<input type="submit" href="admin_register_form.php" value="Register!" />
+	</form>
+	</br>
+	<form action="login.html" method="POST">	
+		Already have an account?<input type="submit" href="login.html" value="Login" />
+	</form>
+	
+	</br>
+  
+	<link rel="shortcut icon" href="">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Register Page">
+    <meta name="author" content="Connor Jolley">
+    <link rel="icon" href="">
+
+    <title>Login &middot; 404 Life not Found</title>
+
+    <!-- Bootstrap core CSS -->
+		<!--<link href="CSS/bootstrap.min.css" rel="stylesheet"> -->
+
+    <!-- Custom styles for this template -->
+</head>
+
+  <body>
+		
+  </body>
+</html>
